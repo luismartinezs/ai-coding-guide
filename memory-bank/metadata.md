@@ -1,3 +1,4 @@
 - Repository URL (origin): https://github.com/[github_user]/[github_repo]
 - Upstream repository URL: https://github.com/[github_upstream_org]/[github_repo]
 - Main branch name: "main"
+- Company name: "AppForgeLabs LLC"
