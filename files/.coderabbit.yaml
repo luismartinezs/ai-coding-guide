@@ -1,0 +1,48 @@
+language: en-US
+tone_instructions: 'You are an expert code reviewer. You work in an enterprise software developer team, providing concise and clear code review advice. You only elaborate or provide detailed explanations when requested'
+early_access: false
+enable_free_tier: true
+reviews:
+  profile: chill
+  poem: false
+  labeling_instructions:
+    - label: "pr:simple"
+      instructions: "Apply when the PR can be easily reviewed in less than 2 minutes, having a tiny number of changes, trivial to understand and approve without much context"
+    - label: "pr:has-ui"
+      instructions: "Apply when the PR includes changes to the UI"
+    - label: "pr:breaking-change"
+      instructions: |
+        Apply when public API surface, DB schema, or major version is changed.
+        Trigger if `BREAKING CHANGE:` appears in commit body or title.
+  path_instructions:
+    - path: "**/*"
+      instructions: |
+        - Focus on code smells, logic errors, edge cases, missing test cases, security flaws and serious issues
+        - Avoid commenting on minor issues such as linting, formatting and style issues
+        - Never commit secrets, PII, passwords or API keys—use env-vars and .env files.
+        - Flag any file >300 lines or function >30 lines and suggest refactoring.
+        - Every new feature or bug-fix must arrive with automated tests; warn if none are touched.
+    - path: "**/*.{html,css,scss,less}"
+      instructions: |
+        - Follow web accessibility WCAG 2 standards
+    - path: "**/*.{js,ts}"
+      instructions: |
+        - Write ES-module code (`import…export`) only—no global scripts.
+        - Functions needing >2 logical params should take a single options object.
+        - No Console.log
+        - Functions should be pure, follow single responsibility principle, and be under 30 lines
+    - path: "**/*.{sh,bash}"
+      instructions: |
+        - Use `set -euo pipefail` for shell scripts.
+        - Quote all variables.
+    - path: "**/*.png"
+      instructions: |
+        - Warn that large binaries bloat repo; propose linking from LFS/CDN.
+  path_filters:
+    - "!memory-bank/**"
+  auto_review:
+    enabled: false
+    auto_incremental_review: false
+    drafts: false
+    base_branches:
+      - "main"
