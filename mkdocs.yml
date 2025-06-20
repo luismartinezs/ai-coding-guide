@@ -1,0 +1,36 @@
+site_name: AI Coding Guide
+site_description: "Guide to fix issues in existing codebases using AI"
+site_url: ""
+
+# Where the markdown lives (default is "docs")
+# docs_dir: docs
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed
+  - pymdownx.emoji
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - footnotes
+  - attr_list
+  - def_list
+
+nav:
+  - Home: index.md

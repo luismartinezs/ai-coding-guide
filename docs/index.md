@@ -1,6 +1,4 @@
-# Guide to coding with AI
-
-How to use AI to code in large codebases and avoid making a mess.
+# Title: Guide to fix issues in existing codebases using AI (or how to make vibe-coding boring again)
 
 # Using AI to code blindly will lead to slop
 
@@ -365,42 +363,7 @@ for this, *honestly* I would simply suggest you copy paste each the step one by 
 4. Commit the changes
 5. Repeat for step 2 of the plan
 
-Each step is probably simple enough for an inference model to implement, meaning you might not need a thinking model. So if speed and cost are a serious bottleneck, you might switch to a cheaper model. I personally don't bother and stick to `gemini-2.5-pro` or whatever latest thinking model I have access to.
-
-The above is most likely the fastest way and what I would do.
-
-Still I will provide the below as an alternative prompting process. You can prompt the AI like this:
-
-```md
-instructions: @p-issue-implement.md
-plan: @123-plan.md
-```
-
-> Inference model might be enough, but feel free to stick to thinking model
-
-With the above prompt the AI has clear instructions to read the plan, implement the first checkbox it finds, check the box, and stop.
-
-Sometimes the AI is overeager to do as much as possible at once. If you keep running into this, you can default to copy pasting the plan step by step as I suggested first.
-
-Some steps might be so simple that it would be faster for you to do them by hand.
-
-As you progress through the plan, you might discover new information that modifies the plan, in which case you should edit the plan.
-
-Lastly, involving testing. It is up to you and the context of the project how that is done, or even skipped. Follow whatever protocol is already in place. It would be a good idea to create a file with detailed instructions on how testing works in your codebase, and ask AI to rely on it to create tests. There is no one size fits all here as test frameworks and utils can vary wildly.
-
-## Create a new pull request (PR)
-
-> This is an optional step and depends on your team's workflow. However I suggest you at least read it
-
-The task should be complete now. AI will write a pull request (PR) for us. You might not want or need to create PRs, but in the following I will describe a specific workflow that I would recommend anyone use regardless. To summarize it:
-
-1. Integrate coderabbitai into your Github (easy, optional)
-2. Create a PR draft on Github (so we can easily get the diff)
-3. Write the PR body based on the git diff and the issue context
-4. Ask coderabbitai to review the PR, then make any changes that seem reasonable (optional)
-5. Set the PR as "ready for review", or merge it if it's a solo project
-
-### Integrate coderabbitai (optional)
+Each step is probably simple enough for an inference model to implement, meaning you might not need a thinking model. So if speed and cost are a serious bottleneck, you might switch to a cheaper model. I personally don't bother and stick
 
 > Note: This is not sponsorship of any kind, I have zero affiliation with Coderabbitai. I integrated it recently in my workflow and I think it's quite useful.
 
